@@ -107,7 +107,16 @@ From there directly download the .gguf or .ggml file into the local directory.
 
 Now replace the path of the respective model in the app.py file.
 
+
+
+
 ## Running the chat Assistant
+
+Add the path to the LLM model to load in the config.ini file.
+```
+llama_path=llama_path_from_your_local
+mistrl_path=mistrl_path_your_local
+```
 
 The UI of this chat assistant is based on Streamlit. To start this assistant you need to use the following command from the working directory:
 
