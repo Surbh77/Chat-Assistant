@@ -21,9 +21,9 @@ This **AI Chat Assistant**, equipped with versatile models like GPT-3.4 Turbo, G
 
 **Current Modules**
 
--   **Models**: You can load, test, and use multiple LLM model restricted to .ggml format.
--   **Maintain Conversation**: It maintains the previous conversation and gives best output from the history of the chat.
--   **Temperature**: You can change the accuracy of the optput you want form the respective model.
+-   **Models**: You can load, test, and use multiple LLM models restricted to .ggml and .gguf format.
+-   **Maintain Conversation**: It maintains the previous conversation and gives the best output from the history of the chat.
+-   **Temperature**: You can change the accuracy of the output you want from the respective model.
 
 
 ## Getting Started
@@ -46,16 +46,16 @@ cuda11
 
 To run this project, you will need to add the following environment variables to your .env file
 
-Get the openai key by logging into the openai account.
+Get the Openai key by logging into the Openai account.
 `OPENAI_KEY`
 
-Get the hugging face by logging into the huggingface account.
+Get the hugging face by logging into the hugging face account.
 `HUGGINGFACE_KEY`
 
 
 ## Build and prepare the project
 
-This section will go through the cloning the repo,creating a conda environment, setting up the environment variables and download the LLM models from huggingface.
+This section will go through cloning the repo, creating a conda environment, setting up the environment variables, and downloading the LLM models from huggingface.
 
 **Clone this repository**
 
@@ -64,9 +64,9 @@ Open gitbash and navigate to the appropriate directory where you want to clone t
 ```
 git clone https://github.com/Surbh77/Chat-Assistant.git
 ```
-**Creating conda environment**
+**Creating a conda environment**
 
-Open Anaconda Command Prompt. Now create a new conda environment using following commands:
+Open Anaconda Command Prompt. Now create a new conda environment using the following commands:
 
 ```
 conda create -n chat_assistant python=3.10.4
@@ -83,21 +83,21 @@ Install all the dependencies from the requirements.txt file using the following 
 conda install -r requirements.txt
 ```
 
-**Setting enviroment variables** 
+**Setting environment variables** 
 
-To setup environment variable in linux OS use following command:
+To set environment variables in Linux OS use the following command:
 ```
 pip install openai
 export OPENAI_API_KEY=your_api_key
 ```
-To setup environment variable in windows OS use following command:
+To set environment variables in Windows OS use the following command:
 ```
 set OPENAI_API_KEY=your_api_key
 ```
 
 **Download LLM models from Huggingface**
 
-You can use any of the .ggml or .gguf format model here.
+You can use any of the .ggml or .gguf format models here.
 Login into Huggingface and search for the following models:
 
 ```
@@ -109,10 +109,12 @@ Now replace the path of the respective model in the app.py file.
 
 ## Running the chat Assistant
 
-The UI of this chat assistant is based on streamlit. To start this assistant you need use the following command from the working directory:
+The UI of this chat assistant is based on Streamlit. To start this assistant you need to use the following command from the working directory:
 
 ```
 streamlit run app.py
 ```
+
+
 
 
