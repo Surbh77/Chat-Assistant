@@ -1,42 +1,118 @@
+
 # AI Chat Assistant
 
-Introducing a cutting-edge AI Chat Assistant equipped with four distinct models - GPT-3.4 Turbo, GPT-4, Llama-2, and Mistral. This personalized assistant intelligently selects a default language model (LLM) based on user preference, ensuring a formal and context-aware conversation. Noteworthy is its ability to seamlessly recall previous interactions, maintain a coherent dialogue and even remember user details, exemplified by suggesting specific surnames. Elevate your conversational experience with an AI assistant that adapts and engages at every turn.
+## Demo
 
 
-https://github.com/Surbh77/Chat-Assistant/assets/108724393/f73c3054-d422-4555-8ed2-ce28f29afa72
+https://github.com/Surbh77/Chat-Assistant/assets/108724393/804d0247-28e6-4890-8dc0-9092b2d3c697
 
 
 
-# Certainly! Here's a step-by-step guide to using your AI chat assistant:
+## Table of Content
+- [About](#About)  
+- [Getting Started](#GettingStarted)  
+    - [Prerequisites](#Prerequisites) 
+    - [Environment Variables](#EnvironmentVariables)
+- [Build and prepare the project](#Buildandpreparetheproject)
+- [Running the chat Assistant](#RunningthechatAssistant)
+## About
 
-## Launch the Chat Assistant:
-Open the chat assistant application on your device.
+This **AI Chat Assistant**, equipped with versatile models like GPT-3.4 Turbo, GPT-4, Llama-2, and Mistral, dynamically selects the default language model (LLM) based on user preference.
 
-## Select Default Language Model (LLM):
-On the side panel, choose the default language model (LLM) from the available options: GPT-3.4 Turbo, GPT-4, Llama-2, or Mistral.
+**Current Modules**
 
-## Initiate a Conversation:
-Start the conversation by typing your message or query in the chat interface. The selected LLM will respond based on the input.
+-   **Models**: You can load, test, and use multiple LLM model restricted to .ggml format.
+-   **Maintain Conversation**: It maintains the previous conversation and gives best output from the history of the chat.
+-   **Temperature**: You can change the accuracy of the optput you want form the respective model.
 
-## Observe Formal Responses:
-Notice that the responses from the selected LLM are formal, and tailored to the appropriate context. This is achieved through careful prompting designed to guide the language model's output.
 
-## Switching Models (Optional):
-If needed, you can switch to a different model mid-conversation by selecting another one from the side panel. This can help tailor responses based on the strengths and characteristics of each model.
+## Getting Started
 
-## Reference Previous Conversations:
-As the conversation progresses, the chat assistant remembers the context and information provided earlier. This allows for more coherent and context-aware responses.
+These instructions will get you a copy of the project up and running on your local machine
 
-## Test Memory Recall:
-Towards the end of the conversation, test the chat assistant's memory recall by referring to the information mentioned earlier. For example, ask about your name or a specific detail from a previous message.
 
-## Evaluate Suggestions:
-Observe how the chat assistant suggests information based on the remembered context. In your example, the model remembered your name and suggested two surnames, showcasing its ability to maintain context throughout the conversation.
+## Prerequisites
 
-## Provide Feedback (Optional):
-If the response requires improvement or clarification, you can provide feedback to help enhance the chat assistant's performance. This may involve refining prompts or adjusting the way information is presented.
+You need to have a machine with Python >= 3.9. Optional, cuda>=11. for fast and best results
 
-## End the Conversation:
-Conclude the conversation when you have received the information or assistance you need. The chat assistant retains the conversation context for a more personalized and continuous user experience in future interactions.
+```
+$ python3.9 -V
+Python 3.9  
 
-By following these steps, users can effectively use your AI chat assistant, benefiting from its ability to remember context, offer formal responses, and seamlessly switch between different language models based on their preferences or specific requirements.
+cuda11
+```
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+Get the openai key by logging into the openai account.
+`OPENAI_KEY`
+
+Get the hugging face by logging into the huggingface account.
+`HUGGINGFACE_KEY`
+
+
+## Build and prepare the project
+
+This section will go through the cloning the repo,creating a conda environment, setting up the environment variables and download the LLM models from huggingface.
+
+**Clone this repository**
+
+Open gitbash and navigate to the appropriate directory where you want to clone these files. Run the following commands:
+
+```
+git clone https://github.com/Surbh77/Chat-Assistant.git
+```
+**Creating conda environment**
+
+Open Anaconda Command Prompt. Now create a new conda environment using following commands:
+
+```
+conda create -n chat_assistant python=3.10.4
+```
+
+Now activate the new conda environment.
+
+```
+Conda activate chat_assistant
+```
+Install all the dependencies from the requirements.txt file using the following command
+
+```
+conda install -r requirements.txt
+```
+
+**Setting enviroment variables** 
+
+To setup environment variable in linux OS use following command:
+```
+pip install openai
+export OPENAI_API_KEY=your_api_key
+```
+To setup environment variable in windows OS use following command:
+```
+set OPENAI_API_KEY=your_api_key
+```
+
+**Download LLM models from Huggingface**
+
+You can use any of the .ggml or .gguf format model here.
+Login into Huggingface and search for the following models:
+
+```
+TheBloke/Llama-2-7B-Chat-GGML
+```
+From there directly download the .gguf or .ggml file into the local directory.
+
+Now replace the path of the respective model in the app.py file.
+
+## Running the chat Assistant
+
+The UI of this chat assistant is based on streamlit. To start this assistant you need use the following command from the working directory:
+
+```
+streamlit run app.py
+```
+
+
