@@ -6,8 +6,15 @@ from langchain.schema import (SystemMessage, HumanMessage, AIMessage)
 from langchain.llms import LlamaCpp
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-import streamlit as st
 
+import streamlit as st
+import configparser
+
+
+def read_config(file_path='config.ini'):
+    config = configparser.ConfigParser()
+    config.read(file_path)
+    return config
 
 def init_page() -> None:
     st.set_page_config(
@@ -28,6 +35,13 @@ def init_messages() -> None:
 
 
 def select_llm() -> Union[ChatOpenAI, LlamaCpp]:
+    
+    config = read_config()
+    openai_kay = config.get('Credentials', 'openaikay')
+    llama_path = config.get('Credentials', 'llama_path')
+    mistrl_path = config.get('Credentials', 'mistrl_path')
+
+
     model_name = st.sidebar.radio("Choose LLM:",
                                   ("gpt-3.5-turbo-0613", "gpt-4",
                                    "llama-2-7b-chat.Q4_K_M",'mistral-7b-v0.1.Q4_0'))
@@ -35,11 +49,11 @@ def select_llm() -> Union[ChatOpenAI, LlamaCpp]:
                                     max_value=1.0, value=0.0, step=0.01)
     if model_name.startswith("gpt-"):
         return ChatOpenAI(temperature=temperature, model_name=model_name,
-                          openai_api_key=' ')
+                          openai_api_key=openai_kay)
     elif model_name.startswith("llama-2-"):
         callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
         return LlamaCpp(
-                model_path=r"C:\LLM MOdels\models--TheBloke--Llama-2-7b-Chat-GGUF\snapshots\191239b3e26b2882fb562ffccdd1cf0f65402adb\llama-2-7b-chat.Q4_K_M.gguf",
+                model_path=llama_path,
                 temperature=temperature,
                 max_tokens=100,
                 top_p=1,
@@ -50,7 +64,7 @@ def select_llm() -> Union[ChatOpenAI, LlamaCpp]:
     elif model_name.startswith("mistral"):
         callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
         return LlamaCpp(
-                model_path=r"C:\LLM MOdels\Mistral\mistral-7b-v0.1.Q4_0\mistral-7b-v0.1.Q4_0.gguf",
+                model_path=mistrl_path,
                 temperature=temperature,
                 max_tokens=100,
                 top_p=1,
